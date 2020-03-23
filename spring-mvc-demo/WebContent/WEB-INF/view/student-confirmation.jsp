@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<title>Student Registration Form</title>
+	<title>Student Confirmation</title>
 </head>
 
 <body>

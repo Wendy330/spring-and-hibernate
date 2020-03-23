@@ -11,17 +11,12 @@ public class StudentController {
 
 	@RequestMapping("/showForm")
 	public String showForm(Model theModel) {
-		Student theStudent = new Student();
-		theModel.addAttribute("student", theStudent);
-		
+		theModel.addAttribute("student", new Student());
 		return "student-form";
 	}
 	
 	@RequestMapping("/processForm")
 	public String processForm(@ModelAttribute("student") Student theStudent) {
-		
-//		System.out.println("theStudent: " + theStudent.getFirstName() + " " + theStudent.getLastName());
-		
 		return "student-confirmation";
 	}
 }
