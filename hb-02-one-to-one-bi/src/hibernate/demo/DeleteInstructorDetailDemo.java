@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 import hibernate.demo.entity.Instructor;
 import hibernate.demo.entity.InstructorDetail;
 
-public class GetInstructorDetailDemo {
+public class DeleteInstructorDetailDemo {
 
 	public static void main(String[] args) {
 		// create session factory
@@ -24,22 +24,25 @@ public class GetInstructorDetailDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, 2);
+			InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, 3);
 			
 			// save the student object
-			System.out.println("Found instructor details: " + tempInstructorDetail);
-			
+			System.out.println("Found instructor detail: " + tempInstructorDetail);
 			System.out.println("Found instructor: " + tempInstructorDetail.getInstructor());
+			
+			if (tempInstructorDetail != null) {
+				tempInstructorDetail.getInstructor().setInstructorDetail(null);
+				
+				session.delete(tempInstructorDetail);
+			}
 			
 			// commit transaction
 			session.getTransaction().commit();
 			
 			System.out.println("Done!");
 			
-		} catch(Exception ex) {
-			ex.printStackTrace();
 		} finally {
-			session.close(); // handle connection leak issue
+			session.close();
 			factory.close();
 		}
 	}
