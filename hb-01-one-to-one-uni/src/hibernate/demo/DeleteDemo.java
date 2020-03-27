@@ -6,7 +6,6 @@ import org.hibernate.cfg.Configuration;
 
 import hibernate.demo.entity.Instructor;
 import hibernate.demo.entity.InstructorDetail;
-import hibernate.demo.entity.Student;
 
 public class DeleteDemo {
 

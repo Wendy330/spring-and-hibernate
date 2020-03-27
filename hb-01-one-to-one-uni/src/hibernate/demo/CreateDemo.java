@@ -6,7 +6,6 @@ import org.hibernate.cfg.Configuration;
 
 import hibernate.demo.entity.Instructor;
 import hibernate.demo.entity.InstructorDetail;
-import hibernate.demo.entity.Student;
 
 public class CreateDemo {
 
@@ -25,7 +24,7 @@ public class CreateDemo {
 			Instructor tempInstructor = new Instructor("Hebe", "Tien", "hebe.tien@atune.com");
 			InstructorDetail details = new InstructorDetail("www.hebe_atune.com", "Coding");
 			
-			tempInstructor.setInstuctorDetail(details);
+			tempInstructor.setInstructorDetail(details);
 			
 			// start a transaction
 			session.beginTransaction();
