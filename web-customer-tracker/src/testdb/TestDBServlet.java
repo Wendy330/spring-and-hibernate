@@ -22,6 +22,13 @@ public class TestDBServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int n = 1234;
+		
+		n = n / 10;
+		
+		System.out.print("n: " + n);
+		
 		// setup connection variables
 		String user = "springstudent";
 		String pwd = "springstudent";
