@@ -80,6 +80,9 @@
 								<button type="submit" class="btn btn-success">Login</button>
 							</div>
 						</div>
+						
+						<!-- Manually adding csrf token if not using mvc form tag -->
+						<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 
 					</form:form>
 
