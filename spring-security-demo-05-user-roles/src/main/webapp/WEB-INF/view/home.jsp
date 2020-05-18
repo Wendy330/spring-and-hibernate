@@ -23,19 +23,22 @@
 	</p>
 	
 	<hr>
-	<!-- Add a link to point to /leaders this is for the managers  -->
-	<p>
-		<a href="${pageContext.request.contextPath}/leaders">Leadership Meeting</a>
-		(Only for Manager pages)	
-	</p>
 	
-	<!-- Add a link to point to /systems this is for the admins  -->
-	<p>
-		<a href="${pageContext.request.contextPath}/systems">IT Systems Meeting</a>
-		(Only for Admin pages)	
-	</p>
+	<security:authorize access="hasRole('MANAGER')">
+		<!-- Add a link to point to /leaders this is for the managers  -->
+		<p>
+			<a href="${pageContext.request.contextPath}/leaders">Leadership Meeting</a>
+			(Only for Manager pages)	
+		</p>
+	</security:authorize>
 	
-	<hr>
+	<security:authorize access="hasRole('ADMIN')">
+		<!-- Add a link to point to /systems this is for the admins  -->
+		<p>
+			<a href="${pageContext.request.contextPath}/systems">IT Systems Meeting</a>
+			(Only for Admin pages)	
+		</p>
+	</security:authorize>
 	
 	<!-- Add a logout button -->
 	<form:form action="${pageContext.request.contextPath}/logout" method="POST">
