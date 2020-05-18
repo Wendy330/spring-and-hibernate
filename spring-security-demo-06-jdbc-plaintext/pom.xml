@@ -51,13 +51,13 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.45</version>
+			<version>8.0.20</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
-			<version>0.9.5.2</version>
+			<version>0.9.5.5</version>
 		</dependency>
 
 		<!-- Servlet, JSP and JSTL support -->
