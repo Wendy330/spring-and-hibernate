@@ -13,23 +13,22 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// add our uses for in memory authentication
-		auth.inMemoryAuthentication().withUser("hebe").password("{noop}123").roles("EMPLOYEE", "MANAGER");
-		auth.inMemoryAuthentication().withUser("esther").password("{noop}123").roles("MANAGER");
-		auth.inMemoryAuthentication().withUser("snow").password("{noop}123").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("hebe").password("{noop}123").roles("EMPLOYEE");
+		auth.inMemoryAuthentication().withUser("esther").password("{noop}123").roles("EMPLOYEE","MANAGER");
+		auth.inMemoryAuthentication().withUser("snow").password("{noop}123").roles("EMPLOYEE", "ADMIN");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.anyRequest()
-			.authenticated()
+			.antMatchers("/").hasRole("EMPLOYEE")
+			.antMatchers("/leaders/**").hasRole("MANAGER")
+			.antMatchers("/systems/**").hasRole("ADMIN")
 			.and()
-			.formLogin()
-			.loginPage("/showMyLoginPage")
-			.loginProcessingUrl("/authenticateTheUser")
-			.permitAll()
+			.formLogin().loginPage("/showMyLoginPage").loginProcessingUrl("/authenticateTheUser").permitAll()
 			.and()
-			.logout()
-			.permitAll();
+			.logout().permitAll()
+			.and()
+			.exceptionHandling().accessDeniedPage("/access-denied");
 	}
 }
