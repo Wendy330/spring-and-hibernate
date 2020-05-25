@@ -1,7 +1,7 @@
 {
 	"id": 14,
-	"firstName": "Luca",
-	"lastName": "Fischer",
+	"firstName": "Hebe",
+	"lastName": "Tien",
 	"active": true,
 	"address": {
 		"street": "100 Main St",
@@ -10,5 +10,6 @@
 		"zip": "19403",
 		"country": "USA"
 	},
-	"languages" : ["Java", "C#", "Python", "Javascript"]
+	"languages" : ["Java", "C#", "Python", "Javascript"],
+	"company" : "A Tune"
 }
