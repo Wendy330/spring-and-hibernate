@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import springboot.thymeleafdemo.entity.Employee;
 import springboot.thymeleafdemo.service.EmployeeService;
@@ -37,9 +38,22 @@ public class EmployeeController {
 		return "employees/employee-form";
 	}
 	
+	@GetMapping("/showFormForUpdate")
+	public String showFormForUpdate(@RequestParam("employeeId")int theId, Model theModel) {
+		theModel.addAttribute("employee", employeeService.findById(theId));
+		
+		return "employees/employee-form";
+	}
+	
 	@PostMapping("/save")
 	public String saveEmployee(@ModelAttribute("employee")Employee theEmployee) {
 		employeeService.save(theEmployee);
+		return "redirect:/employees/list";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("employeeId")int theId) {
+		employeeService.deleteById(theId);
 		return "redirect:/employees/list";
 	}
 }
